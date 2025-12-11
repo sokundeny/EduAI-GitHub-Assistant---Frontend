@@ -4,10 +4,10 @@ import MainLayout from "../layout/MainLayout";
 
 const router = createBrowserRouter([
   {
+    path: "/",
     element: <MainLayout />,
     children: [
-      { path: "/", element: <MainLayout /> },
-          // { index: true, element: <NoAssignmentSelected /> }, // nothing selected
+          { index: true, element: <NoAssignmentSelected /> }, // nothing selected
 
     ],
   },
