@@ -1,8 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const NonSelected = () => {
   return (
-    <div>NonSelected</div>
+    <div>
+      NonSelected
+      <Link to={"/assignment"}> assignment </Link>
+    </div>
   )
 }
 

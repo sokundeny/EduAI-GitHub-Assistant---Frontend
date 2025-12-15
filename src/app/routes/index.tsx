@@ -1,20 +1,25 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import ChallengeLayout from "../layout/ChallengeLayout";
 import MainLayout from "../layout/MainLayout";
+import NonSelected from "@/pages/NonSelected";
+import Assignment from "@/pages/Assignment";
+import Challenge from "@/features/challenge/components/Challenge";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
     children: [
-          { index: true, element: <NoAssignmentSelected /> }, // nothing selected
+          { index: true, element: <NonSelected /> }, // nothing selected
+          { path: '/assignment', element: <Assignment /> }, // nothing selected
 
     ],
   },
   {
+    path: "/challenge",
     element: <ChallengeLayout />,
     children: [
-      // { path: "/challenge/:challengeId", element: <Challenge /> },
+      { path: "/challenge/:challengeId", element: <Challenge /> },
     ],
   },
 ]);

@@ -1,9 +1,17 @@
-import React from 'react'
+import AssignmentsList from "@/features/assignment/components/AssignmentsList";
+import { Link } from "react-router-dom";
 
 const Assignment = () => {
-  return (
-    <div>Assignment</div>
-  )
-}
+  // Fake assignment list for now
 
-export default Assignment
+  return (
+    <div className="px-4">
+      <h1>Assignment List</h1>
+
+      <Link to="/">Back Home</Link>
+      
+    </div>
+  );
+};
+
+export default Assignment;

@@ -1,8 +1,11 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 
 const MainPanel = () => {
   return (
-    <div>MainPanel</div>
+    <div className='pt-4'>
+      <Outlet />
+    </div>
   )
 }
 
