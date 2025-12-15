@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createAssignment } from "@/features/assignment/apis/mutateAssignments";
 import { fetchAssignments } from "../apis/fetchAssignments";
+import type { Assignment } from "@/shared/types/types";
 
 export const useAssignmentQuery = (classId: number) => {
     return useQuery({
@@ -11,15 +12,16 @@ export const useAssignmentQuery = (classId: number) => {
 }
 
 export const useCreateAssignment = () => {
-    const queryClient = useQueryClient();
-    return useMutation({
-        mutationFn: (params: { classId: number; title: string }) => 
-            createAssignment(params.classId, params.title), // Call function with parameters
-        onSuccess: (data, variables) => {
-            // Invalidate specific query with classId
-            queryClient.invalidateQueries({ 
-                queryKey: ["assignments", variables.classId] 
-            });
-        }
-    });
-}
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: createAssignment,
+    onSuccess: (data) => {
+      queryClient.setQueryData<Assignment[]>(
+      ["assignments", data.classId],
+      (old = []) => [...old, data]
+    );
+
+    },
+  });
+};

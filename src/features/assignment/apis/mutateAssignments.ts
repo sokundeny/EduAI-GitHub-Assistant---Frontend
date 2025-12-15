@@ -1,7 +1,7 @@
 import { assignmentsStore } from "@/mock_db";
 import type { Assignment } from "@/shared/types/types";
 
-export const createAssignment = (classId: number, title: string) =>
+export const createAssignment = ({classId, title} : {classId: number, title: string}) =>
   new Promise<Assignment>(resolve => {
     const newAssignment: Assignment = {
       id: assignmentsStore[classId]?.length
